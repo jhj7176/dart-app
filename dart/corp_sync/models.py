@@ -59,7 +59,7 @@ class CompanyIndustryView(models.Model):
     induty_code = models.CharField(max_length=10)
     induty_name = models.CharField(max_length=255)
     level = models.CharField(max_length=20)
-    category_level = models.IntegerField()
+    category_level = models.CharField(max_length=10)
 
     class Meta:
         managed = False  # Django는 이 뷰에 대해 테이블을 관리하지 않음
