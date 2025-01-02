@@ -66,6 +66,8 @@ services:
       REDIS_URL: ${REDIS_URL}
       API_HOST: ${API_HOST}
       API_KEY: ${API_KEY1}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_ID: ${ADMIN_ID}
       
     ports:
       - "8091:8091"

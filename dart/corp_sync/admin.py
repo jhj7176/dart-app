@@ -31,7 +31,7 @@ class CompanyInfoAdmin(ExportMixin, admin.ModelAdmin):
         "corp_code", "corp_name", "corp_cls", "bizr_no", "induty_code"
     ]
     list_filter = ["corp_cls"]
-    search_fields = ["=id", "corp_name", "corp_code"]
+    search_fields = ["corp_name", "corp_code"]
 
     # 엑셀 내보내기 기능
     def get_export_formats(self):

@@ -19,7 +19,8 @@ app.config_from_object("django.conf:settings", namespace="CELERY")
 app.conf.beat_schedule = {
     'api-call-task': {
         'task': 'corp_sync.tasks.enqueue_pending_codes',  # 작업을 실행할 함수 경로
-        'schedule': crontab(minute=38, hour=19),  # 매일 18시에 작업 실행
+        'schedule': 3600,  # 매일 18시에 작업 실행
+        # 'schedule': crontab(minute=38, hour=19),  # 매일 18시에 작업 실행
     },
 }
 
