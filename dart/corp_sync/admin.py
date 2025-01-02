@@ -91,9 +91,6 @@ class CorpCodeAdmin(ExportMixin, admin.ModelAdmin):
         "modify_date",
     ]
     
-    # 액션 비활성화 (빈 리스트로 설정)
-    actions = []
-    
     # 필터링 옵션 추가
     list_filter = ["modify_date"]
     
@@ -105,6 +102,33 @@ class CorpCodeAdmin(ExportMixin, admin.ModelAdmin):
         formats = super().get_export_formats()
         formats.append(XLSX)  # Add XLSX to available formats
         return formats
+
+    # 액션 추가: 기업개황 API 호출
+    def get_selected_corp_codes(self, request, queryset):
+        corp_codes = queryset.values_list("corp_code", flat=True)
+        api_results = []
+        api_key = os.environ.get("API_KEY")
+
+        for corp_code in corp_codes:
+            # 기업개황 API 호출
+            try:
+                company_data = get_company_info(
+                    api_url=f"{os.environ.get('API_HOST')}/api/company.json", 
+                    api_key=api_key, 
+                    corp_code=corp_code
+                )
+                message = company_data
+                api_results.append(company_data)
+                # API 호출 성공 시 메시지 추가
+                self.message_user(request, message)
+            except requests.exceptions.RequestException as e:
+                api_results.append({'corp_code': corp_code, 'error': f"API 호출 실패: {str(e)}"})
+                # 실패 메시지 추가
+                self.message_user(request, f"{corp_code} API 호출 실패: {str(e)}", level='error')
+        
+    get_selected_corp_codes.short_description = "선택한 기업의 개황 API 호출"
+
+    actions = [get_selected_corp_codes]
     
     def has_add_permission(self, request):
         return False
