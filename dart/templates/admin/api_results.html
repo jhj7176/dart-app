@@ -1,0 +1,29 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+  <h1>기업개황 API 호출 결과</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Corp Code</th>
+        <th>Company Name</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for result in api_results %}
+        <tr>
+          <td>{{ result.corp_code }}</td>
+          <td>{{ result.corp_name }}</td>
+          <td>
+            {% if result.error %}
+              <span style="color: red;">{{ result.error }}</span>
+            {% else %}
+              <pre>{{ result|json_script:"result_json" }}</pre>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
