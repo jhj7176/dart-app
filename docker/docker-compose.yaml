@@ -21,6 +21,8 @@ services:
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     depends_on:
       - postgresql
+    volumes:
+      - /home/ubuntu/app/pgadmin-data:/var/lib/pgadmin
 
   redis:
     image: redis:latest
@@ -117,122 +119,122 @@ services:
     volumes:
       - /home/ubuntu/app/dart:/usr/src/app
 
-  dart_celery_worker3:
-    image: docker.io/hyeongjin0319/corp-sync:latest
-    container_name: dart_celery_worker3
-    environment:
-      SERVER_MODE: ${SERVER_MODE}
-      APP_RUN: celery-worker
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_DB: ${DB_DB}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
-      REDIS_URL: ${REDIS_URL}
-      API_HOST: ${API_HOST}
-      API_KEY: ${API_KEY4}
-    depends_on:
-      - postgresql
-      - redis
-    volumes:
-      - /home/ubuntu/app/dart:/usr/src/app
+  # dart_celery_worker3:
+  #   image: docker.io/hyeongjin0319/corp-sync:latest
+  #   container_name: dart_celery_worker3
+  #   environment:
+  #     SERVER_MODE: ${SERVER_MODE}
+  #     APP_RUN: celery-worker
+  #     DB_USER: ${DB_USER}
+  #     DB_PASSWORD: ${DB_PASSWORD}
+  #     DB_DB: ${DB_DB}
+  #     DB_HOST: ${DB_HOST}
+  #     DB_PORT: ${DB_PORT}
+  #     REDIS_URL: ${REDIS_URL}
+  #     API_HOST: ${API_HOST}
+  #     API_KEY: ${API_KEY4}
+  #   depends_on:
+  #     - postgresql
+  #     - redis
+  #   volumes:
+  #     - /home/ubuntu/app/dart:/usr/src/app
 
-  dart_celery_worker4:
-    image: docker.io/hyeongjin0319/corp-sync:latest
-    container_name: dart_celery_worker4
-    environment:
-      SERVER_MODE: ${SERVER_MODE}
-      APP_RUN: celery-worker
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_DB: ${DB_DB}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
-      REDIS_URL: ${REDIS_URL}
-      API_HOST: ${API_HOST}
-      API_KEY: ${API_KEY5}
-    depends_on:
-      - postgresql
-      - redis
-    volumes:
-      - /home/ubuntu/app/dart:/usr/src/app
+  # dart_celery_worker4:
+  #   image: docker.io/hyeongjin0319/corp-sync:latest
+  #   container_name: dart_celery_worker4
+  #   environment:
+  #     SERVER_MODE: ${SERVER_MODE}
+  #     APP_RUN: celery-worker
+  #     DB_USER: ${DB_USER}
+  #     DB_PASSWORD: ${DB_PASSWORD}
+  #     DB_DB: ${DB_DB}
+  #     DB_HOST: ${DB_HOST}
+  #     DB_PORT: ${DB_PORT}
+  #     REDIS_URL: ${REDIS_URL}
+  #     API_HOST: ${API_HOST}
+  #     API_KEY: ${API_KEY5}
+  #   depends_on:
+  #     - postgresql
+  #     - redis
+  #   volumes:
+  #     - /home/ubuntu/app/dart:/usr/src/app
 
-  dart_celery_worker5:
-    image: docker.io/hyeongjin0319/corp-sync:latest
-    container_name: dart_celery_worker5
-    environment:
-      SERVER_MODE: ${SERVER_MODE}
-      APP_RUN: celery-worker
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_DB: ${DB_DB}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
-      REDIS_URL: ${REDIS_URL}
-      API_HOST: ${API_HOST}
-      API_KEY: ${API_KEY6}
-    depends_on:
-      - postgresql
-      - redis
-    volumes:
-      - /home/ubuntu/app/dart:/usr/src/app
+  # dart_celery_worker5:
+  #   image: docker.io/hyeongjin0319/corp-sync:latest
+  #   container_name: dart_celery_worker5
+  #   environment:
+  #     SERVER_MODE: ${SERVER_MODE}
+  #     APP_RUN: celery-worker
+  #     DB_USER: ${DB_USER}
+  #     DB_PASSWORD: ${DB_PASSWORD}
+  #     DB_DB: ${DB_DB}
+  #     DB_HOST: ${DB_HOST}
+  #     DB_PORT: ${DB_PORT}
+  #     REDIS_URL: ${REDIS_URL}
+  #     API_HOST: ${API_HOST}
+  #     API_KEY: ${API_KEY6}
+  #   depends_on:
+  #     - postgresql
+  #     - redis
+  #   volumes:
+  #     - /home/ubuntu/app/dart:/usr/src/app
 
-  dart_celery_worker6:
-    image: docker.io/hyeongjin0319/corp-sync:latest
-    container_name: dart_celery_worker6
-    environment:
-      SERVER_MODE: ${SERVER_MODE}
-      APP_RUN: celery-worker
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_DB: ${DB_DB}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
-      REDIS_URL: ${REDIS_URL}
-      API_HOST: ${API_HOST}
-      API_KEY: ${API_KEY7}
-    depends_on:
-      - postgresql
-      - redis
-    volumes:
-      - /home/ubuntu/app/dart:/usr/src/app
+  # dart_celery_worker6:
+  #   image: docker.io/hyeongjin0319/corp-sync:latest
+  #   container_name: dart_celery_worker6
+  #   environment:
+  #     SERVER_MODE: ${SERVER_MODE}
+  #     APP_RUN: celery-worker
+  #     DB_USER: ${DB_USER}
+  #     DB_PASSWORD: ${DB_PASSWORD}
+  #     DB_DB: ${DB_DB}
+  #     DB_HOST: ${DB_HOST}
+  #     DB_PORT: ${DB_PORT}
+  #     REDIS_URL: ${REDIS_URL}
+  #     API_HOST: ${API_HOST}
+  #     API_KEY: ${API_KEY7}
+  #   depends_on:
+  #     - postgresql
+  #     - redis
+  #   volumes:
+  #     - /home/ubuntu/app/dart:/usr/src/app
 
-  dart_celery_worker7:
-    image: docker.io/hyeongjin0319/corp-sync:latest
-    container_name: dart_celery_worker7
-    environment:
-      SERVER_MODE: ${SERVER_MODE}
-      APP_RUN: celery-worker
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_DB: ${DB_DB}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
-      REDIS_URL: ${REDIS_URL}
-      API_HOST: ${API_HOST}
-      API_KEY: ${API_KEY8}
-    depends_on:
-      - postgresql
-      - redis
-    volumes:
-      - /home/ubuntu/app/dart:/usr/src/app
+  # dart_celery_worker7:
+  #   image: docker.io/hyeongjin0319/corp-sync:latest
+  #   container_name: dart_celery_worker7
+  #   environment:
+  #     SERVER_MODE: ${SERVER_MODE}
+  #     APP_RUN: celery-worker
+  #     DB_USER: ${DB_USER}
+  #     DB_PASSWORD: ${DB_PASSWORD}
+  #     DB_DB: ${DB_DB}
+  #     DB_HOST: ${DB_HOST}
+  #     DB_PORT: ${DB_PORT}
+  #     REDIS_URL: ${REDIS_URL}
+  #     API_HOST: ${API_HOST}
+  #     API_KEY: ${API_KEY8}
+  #   depends_on:
+  #     - postgresql
+  #     - redis
+  #   volumes:
+  #     - /home/ubuntu/app/dart:/usr/src/app
 
-  dart_celery_worker8:
-    image: docker.io/hyeongjin0319/corp-sync:latest
-    container_name: dart_celery_worker8
-    environment:
-      SERVER_MODE: ${SERVER_MODE}
-      APP_RUN: celery-worker
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_DB: ${DB_DB}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
-      REDIS_URL: ${REDIS_URL}
-      API_HOST: ${API_HOST}
-      API_KEY: ${API_KEY9}
-    depends_on:
-      - postgresql
-      - redis
-    volumes:
-      - /home/ubuntu/app/dart:/usr/src/app
+  # dart_celery_worker8:
+  #   image: docker.io/hyeongjin0319/corp-sync:latest
+  #   container_name: dart_celery_worker8
+  #   environment:
+  #     SERVER_MODE: ${SERVER_MODE}
+  #     APP_RUN: celery-worker
+  #     DB_USER: ${DB_USER}
+  #     DB_PASSWORD: ${DB_PASSWORD}
+  #     DB_DB: ${DB_DB}
+  #     DB_HOST: ${DB_HOST}
+  #     DB_PORT: ${DB_PORT}
+  #     REDIS_URL: ${REDIS_URL}
+  #     API_HOST: ${API_HOST}
+  #     API_KEY: ${API_KEY9}
+  #   depends_on:
+  #     - postgresql
+  #     - redis
+  #   volumes:
+  #     - /home/ubuntu/app/dart:/usr/src/app
